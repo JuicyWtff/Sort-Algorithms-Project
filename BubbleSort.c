@@ -1,18 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int maximumData(FILE *archive){
-    int i=0;
-    int n;
-    while(fscanf(archive, "%d", &n)!=EOF){ //lee un dato tipo entero en el archivo hasta que llega al final del archivo ya que nuestros datos tienen salto de línea.
-        i++;
-    }
+
+/*
+Función para saber el número de datos en nuestro archivo
+Avanza leyendo datos enteros hasta encontrar el fin de archivo
+*/
+int numberOfLines(FILE *archive){
+    int i=0,n;
+
+    while(fscanf(archive, "%d", &n)!=EOF) i++;
     rewind(archive);
+
     return i;
 }
+
+/*
+Funcion para insertar en un arreglo cualquiera los datos leidos del archivo
+*/
 void insert(FILE *archive, int *arr){
-    int i=0;
-    int n;
+    int i=0, n;
     while(fscanf(archive, "%d", &n)!=EOF){
         arr[i]=n;
         i++;
@@ -50,15 +57,23 @@ int main(){
         perror("Error al abrir el archivo");
         return EXIT_FAILURE;
     }
-    start_t=clock();
-    int n=maximumData(file);
+    
+    //Inicialización de variables para igualdad de condiciones
+    int n=numberOfLines(file);
     int array[n];
     insert(file, array);
-    
+
+    /*Inicio de cronometro para BubbleSort*/
+    start_t=clock();
     BubbleSort(array, n);
     end_t=clock();
+    /*Fin de cronometro para BubbleSort*/
+
     total_t=((double)(end_t-start_t)/ CLOCKS_PER_SEC) *1000.0;
+
     printf("Tiempo total usado por la cpu: %fms\n", total_t);
+
     fclose(file);
+     
     return 0;
 }
