@@ -5,7 +5,7 @@
 
 int main(){
     int limit;
-    printf("Ingrese el límite de numeros a generar: ");
+    printf("Ingrese el limite de numeros a generar: ");
     scanf("%d", &limit);
 
     srand(time(NULL));
