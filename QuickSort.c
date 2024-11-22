@@ -63,6 +63,18 @@ void insert(FILE *archive, int *arr){
     
 }
 
+void printSorted(int *arr, int n){
+	FILE *fPtr= fopen("sorted.txt","w");
+	if(fPtr == NULL){
+		perror("Error in file\n");
+	} else {
+		for(int i= 0; i<n; i++){
+			fprintf(fPtr,"%d\n",arr[i]);
+		}
+		printf("Sorted Array Created!\n");
+	}
+}
+
 int main(){
     clock_t start_t, end_t;
     double total_t;
@@ -78,6 +90,7 @@ int main(){
     insert(file, array);
     quickSort(array,0, n-1);
     end_t=clock();
+    printSorted(array,n);
     total_t=((double)(end_t-start_t)/ CLOCKS_PER_SEC) *1000.0;
     printf("Tiempo total usado por la cpu: %fms\n", total_t);
     fclose(file);
