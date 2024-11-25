@@ -1,0 +1,5 @@
+por completar:
+-correr las pruebas de binary search para el siguiente dato:1831807332 y corregir la tabla.
+-Terminar el análisis para quick Sort
+-agregar capturas de las asíntotas en geogebra para: Binary Search y Quick Sort
+-revisar las citas en formato IEE (porque solamente fueron puestas así por nomas jajaj

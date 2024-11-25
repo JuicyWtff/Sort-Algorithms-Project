@@ -48,7 +48,7 @@ int main(){
     double total_t;
     int key, toSearch;
     
-    FILE *file=fopen("random.txt","r");
+    FILE *file=fopen("sorted1M.txt","r");
     if(file == NULL){
         perror("Error al abrir el archivo");
         return EXIT_FAILURE;
